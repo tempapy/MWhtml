@@ -110,8 +110,7 @@ s1 .dropdown{
 }
 
 
-s {
-    text-decoration-line: none;
+s_dropdown, s_nodropdown {
     font-style: italic;
     color:var(--sanskritcolor);
 }
@@ -194,9 +193,4 @@ pc a, a.root{
     font-size: 70%!important;
     color: grey!important;
     
-}
-
-s_nodropdown {
-    font-style: italic;
-    color:var(--sanskritcolor);
 }
