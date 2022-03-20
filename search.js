@@ -485,7 +485,7 @@ document.addEventListener("DOMContentLoaded", function(){
     searchInput.value = iast2hk(slp12iast(searchQuery));
 
     if (searchQueryDeva != ""){
-      var requestURL = 'https://tempapy.github.io/MWhtml/html_entries/'+searchQueryDeva+'.html';
+      var requestURL = 'html_entries/'+searchQueryDeva+'.html';
       var request = new XMLHttpRequest();
       request.open('GET', requestURL);
       request.responseType = 'document';
