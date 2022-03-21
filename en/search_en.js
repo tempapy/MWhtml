@@ -466,21 +466,21 @@ document.addEventListener("DOMContentLoaded", function(){
 		searchInput.value = searchQuery;
   
 		if (searchQuery != ""){
-			var requestURL = 'https://tempapy.github.io/MWEjson/json_entries/'+searchQuery+'.json';
+			var requestURL = 'html_entries/'+searchQuery+'.html';
 			var request = new XMLHttpRequest();
 			request.open('GET', requestURL);
-			request.responseType = 'json';
+			request.responseType = 'document';
 			request.send();
 			request.onload = function() {
-			var jsonDef = request.response;
-			if (jsonDef != null){
+			var htmlDef = request.response;
+			if ((htmlDef != null)&&(htmlDef.getElementById("definition")!=null)){
 				// Add definition to HTML
 				wordDiv.innerHTML = searchQuery;
-				if ("prev" in jsonDef) prevDiv.innerHTML = "<a href=\"?search="+jsonDef["prev"]+"\">◀ "+jsonDef["prev"]+"</a>";
-				if ("next" in jsonDef) nextDiv.innerHTML = "<a href=\"?search="+jsonDef["next"]+"\">"+jsonDef["next"]+" ▶</a>";
+				if ("prev" in htmlDef) prevDiv.innerHTML = "<a href=\"?search="+htmlDef["prev"]+"\">◀ "+htmlDef["prev"]+"</a>";
+				if ("next" in htmlDef) nextDiv.innerHTML = "<a href=\"?search="+htmlDef["next"]+"\">"+htmlDef["next"]+" ▶</a>";
 				
-				definitionDiv.innerHTML = preFormatDef(jsonDef["entry"]);
-				console.log(jsonDef["prev"])
+				definitionDiv.innerHTML = preFormatDef(htmlDef["entry"]);
+				console.log(htmlDef["prev"])
 				var elements = definitionDiv.getElementsByTagName("s")
 				
 				for(let i = 0; i < elements.length; i++){
@@ -491,6 +491,11 @@ document.addEventListener("DOMContentLoaded", function(){
 				}
 
 			}
+			else {
+				console.log("not found")
+				headerDiv.style.margin = "auto";
+				dataDiv.innerHTML = "<div style='text-align:center;'>The word <b>"+slp12iast(searchQuery)+"</b> was not found.</div><br>";
+			  }
 		}
 	  }
   
