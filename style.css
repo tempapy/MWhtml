@@ -52,7 +52,7 @@ body{
     color:var(--txtcolor);
     --txtlightcolor: dimgray;
     --refcolor: rgb(128, 128, 192);
-    font-family: 'Charis SIL', 'Cambria', 'Charter', 'Times New Roman', serif;
+    font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif;
     
 }
 
@@ -110,9 +110,13 @@ s1 .dropdown{
 }
 
 
-s_dropdown, s_nodropdown {
+s_dropdown {
     font-style: italic;
     color:var(--sanskritcolor);
+}
+s_nodropdown {
+    font-style: italic;
+    color:inherit;
 }
 
 .parentheses {
