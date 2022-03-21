@@ -116,7 +116,6 @@ s_dropdown {
 }
 s_nodropdown {
     font-style: italic;
-    color:inherit;
 }
 
 .parentheses {
