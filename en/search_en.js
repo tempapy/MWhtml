@@ -418,11 +418,14 @@ var slp12deva_table = {
   
   var searchInput = document.getElementById("search");
   var goInput = document.getElementById("go");
-  var definitionDiv = document.getElementById("definition");
   var wordDiv = document.getElementById("word");
   var headerDiv = document.getElementById("header");
   var nextDiv = document.getElementById("next");
   var prevDiv = document.getElementById("prev");
+  var dataDiv = document.getElementById("data");
+
+
+
   document.onclick = function(e) {
 	if (!window.matchMedia('(hover: hover)').matches){
 	  allDropDowns = document.getElementsByClassName("dropdown");
@@ -476,11 +479,12 @@ document.addEventListener("DOMContentLoaded", function(){
 			if ((htmlDef != null)&&(htmlDef.getElementById("definition")!=null)){
 				// Add definition to HTML
 				wordDiv.innerHTML = searchQuery;
+				dataDiv.innerHTML = htmlDef.body.innerHTML;
+				var definitionDiv = document.getElementById("definition");
+
 				if ("prev" in htmlDef) prevDiv.innerHTML = "<a href=\"?search="+htmlDef["prev"]+"\">◀ "+htmlDef["prev"]+"</a>";
 				if ("next" in htmlDef) nextDiv.innerHTML = "<a href=\"?search="+htmlDef["next"]+"\">"+htmlDef["next"]+" ▶</a>";
 				
-				definitionDiv.innerHTML = preFormatDef(htmlDef["entry"]);
-				console.log(htmlDef["prev"])
 				var elements = definitionDiv.getElementsByTagName("s")
 				
 				for(let i = 0; i < elements.length; i++){
