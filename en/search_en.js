@@ -498,7 +498,7 @@ document.addEventListener("DOMContentLoaded", function(){
 			else {
 				console.log("not found")
 				headerDiv.style.margin = "auto";
-				dataDiv.innerHTML = "<div style='text-align:center;'>The word <b>"+slp12iast(searchQuery)+"</b> was not found.</div><br>";
+				dataDiv.innerHTML = "<div style='text-align:center;'>The word <b>"+searchQuery+"</b> was not found.</div><br>";
 			  }
 		}
 	  }
