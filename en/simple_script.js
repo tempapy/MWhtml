@@ -3,7 +3,7 @@ var elements = document.getElementsByTagName("a")
 				
 for(let i = 0; i < elements.length; i++){
 	var link = elements[i].getAttribute("href").slice(12);
-	lements[i].setAttribute("href", "https://apple.com");
+	elements[i].setAttribute("href", "https://apple.com");
 	//elements[i].setAttribute("href", "https://tempapy.github.io/SuperMonier/?searchslp1="+link);
 	//elements[i].setAttribute("onclick", "window.open('https://tempapy.github.io/SuperMonier/?searchslp1="+link+"', 'newwindow', 'width=500,height=600'); return false;");
 
