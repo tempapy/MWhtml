@@ -189,6 +189,9 @@ en a, #prev a, #next a{
     text-decoration: inherit;
     color: inherit
 }
+en a{
+    pointer-events: none; /*disable MWen links*/
+}
 
 pc a, a.root{
     text-decoration: none;
