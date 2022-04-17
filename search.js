@@ -424,32 +424,7 @@ var nextDiv = document.getElementById("next");
 var prevDiv = document.getElementById("prev");
 var dataDiv = document.getElementById("data");
 
-function returnStatus(req, status) {
-  //console.log(req);
-  if(status == 200) {
-    console.log("The url is available");
-    // send an event
-    alert("hey")
-  }
-  else {
-    console.log("The url returned status code " + status);
-    // send a different event
-    alert("oh")
-  }
-}
 
-function fetchStatus(address) {
- var client = new XMLHttpRequest();
- client.onreadystatechange = function() {
-  // in case of network errors this might not give reliable results
-  if(this.readyState == 4)
-   returnStatus(this, this.status);
- }
- client.open("HEAD", address);
- client.send();
-}
-
-fetchStatus("/stc/html_entries/अ.html");
 
 document.onclick = function(e) {
   if (!window.matchMedia('(hover: hover)').matches){
@@ -512,6 +487,31 @@ document.addEventListener("DOMContentLoaded", function(){
     searchInput.value = iast2hk(slp12iast(searchQuery));
 
     if (searchQueryDeva != ""){
+      var client = new XMLHttpRequest();
+      var address = "/stc/html_entries/"+searchQueryDeva+".html"
+      client.onreadystatechange = function() {
+       // in case of network errors this might not give reliable results
+       if(this.readyState == 4)
+        if(this.status == 200) {
+          // send an event
+          var iframeDiv = document.getElementById("iframe");
+          var iframe = document.createElement("iframe");
+          iframe.setAttribute("src", address);
+          iframe.setAttribute("style", "width: 100%;margin:0;padding:0;")
+          iframeDiv.appendChild(iframe)
+        }
+        else {
+          // send a different event
+          
+        }
+      }
+      client.open("HEAD", address);
+      client.send();
+  
+      
+
+
+
       var requestURL = 'html_entries/'+searchQueryDeva+'.html';
       var request = new XMLHttpRequest();
       request.open('GET', requestURL);
