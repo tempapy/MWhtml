@@ -451,7 +451,6 @@ function fetchStatus(address) {
 
 fetchStatus("/stc/html_entries/अ.html");
 
-
 document.onclick = function(e) {
   if (!window.matchMedia('(hover: hover)').matches){
     allDropDowns = document.getElementsByClassName("dropdown");
