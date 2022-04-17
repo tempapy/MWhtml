@@ -424,6 +424,34 @@ var nextDiv = document.getElementById("next");
 var prevDiv = document.getElementById("prev");
 var dataDiv = document.getElementById("data");
 
+function returnStatus(req, status) {
+  //console.log(req);
+  if(status == 200) {
+    console.log("The url is available");
+    // send an event
+    alert("hey")
+  }
+  else {
+    console.log("The url returned status code " + status);
+    // send a different event
+    alert("oh")
+  }
+}
+
+function fetchStatus(address) {
+ var client = new XMLHttpRequest();
+ client.onreadystatechange = function() {
+  // in case of network errors this might not give reliable results
+  if(this.readyState == 4)
+   returnStatus(this, this.status);
+ }
+ client.open("HEAD", address);
+ client.send();
+}
+
+fetchStatus("/stc/html_entries/अ.html");
+
+
 document.onclick = function(e) {
   if (!window.matchMedia('(hover: hover)').matches){
     allDropDowns = document.getElementsByClassName("dropdown");
