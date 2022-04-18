@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if (searchQueryDeva != ""){
       var client = new XMLHttpRequest();
-      var address = "/stc/html_entries/"+searchQueryDeva+".html"
+      var address = "stc/html_entries/"+searchQueryDeva+".html"
       client.onreadystatechange = function() {
        // in case of network errors this might not give reliable results
        if(this.readyState == 4)
