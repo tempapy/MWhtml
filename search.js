@@ -463,28 +463,62 @@ searchInput.addEventListener('keyup', function(e) {
 // });
 
 goInput.onclick = function () {
-  location.href = "?searchhk="+searchInput.value;
+  location.href = "?search"+inputInput.value+"="+searchInput.value;
   //location.href = "?search=अत्याहित"
   
 };
 
+// Choose input type
+var inputInput = document.getElementById("inputType");
+inputInput.onclick = function() {
+  //this.attr("disabled", "true");
+  localStorage.setItem('inputType', inputInput.value);
+  console.log(inputInput.value)
+};
 
 // Search json DB and send text data to html
 document.addEventListener("DOMContentLoaded", function(){
+
+  // Load previous input type:
+  if (localStorage.getItem('inputType') != null){
+    inputInput.value = localStorage.getItem('inputType');
+  }
+  
 
   searchInput.focus()
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   var searchQuery = urlParams.get('searchslp1')
 
-  if ((searchQuery == null) && (urlParams.get('searchhk') != null)) searchQuery = hk2slp1(urlParams.get('searchhk'));
+   if ((searchQuery == null) && (urlParams.get('searchhk') != null)){
+    searchQuery = urlParams.get('searchhk');
+    var searchQueryDeva = slp12deva(hk2slp1(searchQuery));
+    searchInput.value = searchQuery;
+  } 
+  
+  else if ((searchQuery == null) && (urlParams.get('searchdeva') != null)) {
+    searchQuery = urlParams.get('searchdeva'); // Dirty
+    var searchQueryDeva = searchQuery;
+    searchInput.value = searchQuery;
+  } 
+  else if ((searchQuery == null) && (urlParams.get('searchiast') != null)) {
+    searchQuery = urlParams.get('searchiast'); 
+    var searchQueryDeva = slp12deva(hk2slp1(iast2hk(searchQuery)));
+    searchInput.value = searchQuery;
+  } 
 
+  else{
+    var searchQueryDeva = slp12deva(searchQuery);
+    if (inputInput.value == "hk") searchInput.value = iast2hk(slp12iast(searchQuery));
+    else if (inputInput.value == "iast") searchInput.value = slp12iast(searchQuery);
+    else if (inputInput.value == "deva") searchInput.value = slp12deva(searchQuery);
+  }
+  
   if ((searchQuery != "") && (searchQuery != null)){
     headerDiv.style.margin = "unset";
     // CODE :
-    var searchQueryDeva = slp12deva(searchQuery);
 
-    searchInput.value = iast2hk(slp12iast(searchQuery));
+    
 
     if (searchQueryDeva != ""){
       var client = new XMLHttpRequest();
@@ -502,6 +536,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         else {
           // send a different event
+          //console.log("no stc def found")
         }
       }
       client.open("HEAD", address);
