@@ -494,7 +494,6 @@ document.addEventListener("DOMContentLoaded", function(){
        if(this.readyState == 4)
         if(this.status == 200) {
           // send an event
-          console.log("ok")
           var iframeDiv = document.getElementById("iframe");
           var iframe = document.createElement("iframe");
           iframe.setAttribute("src", address);
@@ -503,8 +502,6 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         else {
           // send a different event
-          console.log("error")
-          console.log(address)
         }
       }
       client.open("HEAD", address);
