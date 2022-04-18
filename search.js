@@ -504,6 +504,7 @@ document.addEventListener("DOMContentLoaded", function(){
         else {
           // send a different event
           console.log("error")
+          console.log(address)
         }
       }
       client.open("HEAD", address);
