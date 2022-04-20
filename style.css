@@ -111,12 +111,9 @@ s1 .dropdown{
 }
 
 
-s_dropdown {
+sk {
     font-style: italic;
     color:var(--sanskritcolor);
-}
-s_nodropdown {
-    font-style: italic;
 }
 
 .parentheses {

@@ -488,11 +488,12 @@ document.addEventListener("DOMContentLoaded", function(){
   searchInput.focus()
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  var searchQuery = urlParams.get('searchslp1')
+  var searchQuery = urlParams.get('searchslp1');
 
    if ((searchQuery == null) && (urlParams.get('searchhk') != null)){
     searchQuery = urlParams.get('searchhk');
-    var searchQueryDeva = slp12deva(hk2slp1(searchQuery));
+    searchQuery = hk2slp1(searchQuery);
+    var searchQueryDeva = slp12deva(searchQuery);
     searchInput.value = searchQuery;
   } 
   
@@ -503,7 +504,8 @@ document.addEventListener("DOMContentLoaded", function(){
   } 
   else if ((searchQuery == null) && (urlParams.get('searchiast') != null)) {
     searchQuery = urlParams.get('searchiast'); 
-    var searchQueryDeva = slp12deva(hk2slp1(iast2hk(searchQuery)));
+    searchQuery = hk2slp1(iast2hk(searchQuery));
+    var searchQueryDeva = slp12deva(searchQuery);
     searchInput.value = searchQuery;
   } 
 
@@ -635,7 +637,7 @@ document.addEventListener("DOMContentLoaded", function(){
         else {
           console.log("not found")
           headerDiv.style.margin = "auto";
-          dataDiv.innerHTML = "<div style='text-align:center;'>The word <s_nodropdown>"+slp12iast(searchQuery)+"</s_nodropdown> was not found.</div><br>";
+          dataDiv.innerHTML = "<div style='text-align:center;'>The word "+slp12iast(searchQuery)+" was not found.</div><br>";
         }
       }
     }
