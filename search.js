@@ -492,21 +492,21 @@ document.addEventListener("DOMContentLoaded", function(){
 
    if ((searchQuery == null) && (urlParams.get('searchhk') != null)){
     searchQuery = urlParams.get('searchhk');
+    searchInput.value = searchQuery;
     searchQuery = hk2slp1(searchQuery);
     var searchQueryDeva = slp12deva(searchQuery);
-    searchInput.value = searchQuery;
   } 
   
   else if ((searchQuery == null) && (urlParams.get('searchdeva') != null)) {
     searchQuery = urlParams.get('searchdeva'); // Dirty
-    var searchQueryDeva = searchQuery;
     searchInput.value = searchQuery;
+    var searchQueryDeva = searchQuery;
   } 
   else if ((searchQuery == null) && (urlParams.get('searchiast') != null)) {
     searchQuery = urlParams.get('searchiast'); 
+    searchInput.value = searchQuery;
     searchQuery = hk2slp1(iast2hk(searchQuery));
     var searchQueryDeva = slp12deva(searchQuery);
-    searchInput.value = searchQuery;
   } 
 
   else{
