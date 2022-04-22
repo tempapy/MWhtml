@@ -635,7 +635,6 @@ document.addEventListener("DOMContentLoaded", function(){
           }
 
           var elements = document.getElementsByClassName("sklink")
-          var isHovered = false;
           for (let i = 0; i < elements.length; i++) {
             elements[i].onmouseover = function(e) {
               if (this.firstElementChild == null) {
@@ -648,19 +647,15 @@ document.addEventListener("DOMContentLoaded", function(){
                 iframe.style.border = 0;
                 iframe.style.height = "300px";
                 iframe.onload = function(){
-                  var rect = iframe.getBoundingClientRect();
-                  if (rect.left + iframe.contentWindow.document.body.offsetWidth > document.body.offsetWidth){
-                    console.log(Math.round(rect.left - iframe.contentWindow.document.body.offsetWidth).toString(), iframe.contentWindow.document.body.offsetWidth)
-                    iframe.style.top = rect.top
-                    iframe.style.left = Math.round(rect.left - iframe.contentWindow.document.body.offsetWidth).toString() + "px";
-                    iframe.style.border = "solid";
+                  var initrect = this.parentElement.getBoundingClientRect();
+                  this.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
+                  var rect = this.getBoundingClientRect();
+                  if (rect.right > document.body.offsetWidth && Math.round(initrect.left - (rect.right-rect.left)) > 0){
+                    this.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
                   }
-                  else{
-                    iframe.style.border = "solid";
-                  }
-                  //iframe.style.height = Math.min(300,iframe.contentWindow.document.body.scrollHeight+30) + 'px';
+                  iframe.style.border = "solid";
                 }
-                this.appendChild(iframe)
+                this.prepend(iframe)
                 var body = iframe.contentWindow.document.getElementsByTagName('body')[0];
                 var script = iframe.contentWindow.document.createElement('script');
                 script.innerText = ``;
@@ -668,13 +663,35 @@ document.addEventListener("DOMContentLoaded", function(){
                 body.appendChild(script);
               }
               else{
-                var rect = this.firstElementChild.getBoundingClientRect();
-                  if (rect.left + this.firstElementChild.contentWindow.document.body.offsetWidth > document.body.offsetWidth){
-                    this.firstElementChild.style.top = rect.top
-                    this.firstElementChild.style.left = Math.round(rect.left - this.firstElementChild.contentWindow.document.body.offsetWidth).toString() + "px";
-                  }
-
                 this.firstElementChild.style.display = '';
+                
+                var initrect = this.getBoundingClientRect();
+                this.firstElementChild.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
+                
+                
+                var rect = this.firstElementChild.getBoundingClientRect();
+                if (rect.right > document.body.offsetWidth  && Math.round(initrect.left - (rect.right-rect.left)) > 0){
+                  this.firstElementChild.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
+                }
+                
+
+                /*
+                if (this.parentElement.tagName.toLowerCase() == "sk"){
+                  if (rect.left + this.firstElementChild.contentWindow.document.body.offsetWidth > document.body.offsetWidth){
+                    iframe.style.left = Math.round(rect.left - (rect.right-rect.left) - 10).toString() + "px";
+                  }
+                  else{
+                    //iframe.style.left = Math.round(rect.left + this.parentElement.offsetWidth).toString() + "px";
+                  }
+                }
+                else{
+                  if (rect.left + this.firstElementChild.contentWindow.document.body.offsetWidth > document.body.offsetWidth){
+                    iframe.style.left = Math.round(rect.left - (rect.right-rect.left) - 10).toString() + "px";
+                  }
+                  else{
+                    //iframe.style.left = Math.round(rect.left + this.parentElement.offsetWidth - 30).toString() + "px";
+                  }
+                }*/
                 
               }
             };
