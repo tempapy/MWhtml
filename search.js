@@ -633,6 +633,58 @@ document.addEventListener("DOMContentLoaded", function(){
               
             };
           }
+
+          var elements = document.getElementsByClassName("sklink")
+          var isHovered = false;
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].onmouseover = function(e) {
+              if (this.firstElementChild == null) {
+                var iframe = document.createElement("iframe")
+                iframe.setAttribute("src", "../html_entries/"+slp12deva(this.getAttribute("href").slice(12))+".html")
+                iframe.style.position = "fixed";
+                iframe.style.zIndex = 2;
+                iframe.style.margin = 0;
+
+                iframe.style.border = 0;
+                iframe.style.height = "300px";
+                iframe.onload = function(){
+                  var rect = iframe.getBoundingClientRect();
+                  if (rect.left + iframe.contentWindow.document.body.offsetWidth > document.body.offsetWidth){
+                    console.log(Math.round(rect.left - iframe.contentWindow.document.body.offsetWidth).toString(), iframe.contentWindow.document.body.offsetWidth)
+                    iframe.style.top = rect.top
+                    iframe.style.left = Math.round(rect.left - iframe.contentWindow.document.body.offsetWidth).toString() + "px";
+                    iframe.style.border = "solid";
+                  }
+                  else{
+                    iframe.style.border = "solid";
+                  }
+                  //iframe.style.height = Math.min(300,iframe.contentWindow.document.body.scrollHeight+30) + 'px';
+                }
+                this.appendChild(iframe)
+                var body = iframe.contentWindow.document.getElementsByTagName('body')[0];
+                var script = iframe.contentWindow.document.createElement('script');
+                script.innerText = ``;
+                script.type = 'text/javascript';
+                body.appendChild(script);
+              }
+              else{
+                var rect = this.firstElementChild.getBoundingClientRect();
+                  if (rect.left + this.firstElementChild.contentWindow.document.body.offsetWidth > document.body.offsetWidth){
+                    this.firstElementChild.style.top = rect.top
+                    this.firstElementChild.style.left = Math.round(rect.left - this.firstElementChild.contentWindow.document.body.offsetWidth).toString() + "px";
+                  }
+
+                this.firstElementChild.style.display = '';
+                
+              }
+            };
+          elements[i].onmouseout = function(e) {
+            
+              this.firstElementChild.style.display = 'none';
+            
+          
+          };
+          }
         }
         else {
           console.log("not found")
