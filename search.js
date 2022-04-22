@@ -639,7 +639,7 @@ document.addEventListener("DOMContentLoaded", function(){
             elements[i].onmouseover = function(e) {
               if (this.firstElementChild == null) {
                 var iframe = document.createElement("iframe")
-                iframe.setAttribute("src", "../html_entries/"+slp12deva(this.getAttribute("href").slice(12))+".html")
+                iframe.setAttribute("src", "html_entries/"+slp12deva(this.getAttribute("href").slice(12))+".html")
                 iframe.style.position = "fixed";
                 iframe.style.zIndex = 2;
                 iframe.style.margin = 0;
@@ -648,6 +648,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 iframe.style.height = "300px";
                 iframe.onload = function(){
                   var initrect = this.parentElement.getBoundingClientRect();
+                  this.style.top = Math.round(initrect.top).toString()+"px";
                   this.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
                   var rect = this.getBoundingClientRect();
                   if (rect.right > document.body.offsetWidth && Math.round(initrect.left - (rect.right-rect.left)) > 0){
@@ -666,6 +667,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 this.firstElementChild.style.display = '';
                 
                 var initrect = this.getBoundingClientRect();
+                this.firstElementChild.style.top = Math.round(initrect.top).toString()+"px";
                 this.firstElementChild.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
                 
                 
