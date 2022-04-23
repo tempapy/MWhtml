@@ -647,13 +647,21 @@ document.addEventListener("DOMContentLoaded", function(){
                 iframe.style.border = 0;
                 iframe.style.height = "300px";
                 iframe.onload = function(){
-                  var initrect = this.parentElement.getBoundingClientRect();
-                  this.style.top = Math.round(initrect.top).toString()+"px";
-                  this.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
-                  var rect = this.getBoundingClientRect();
-                  if (rect.right > document.body.offsetWidth && Math.round(initrect.left - (rect.right-rect.left)) > 0){
-                    this.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
+                  if (!window.matchMedia('(hover: hover)').matches){
+                    this.style.top = "50%"
+                    this.style.left = "50%"
+                    this.style.transform = "translate(-50%,-50%)" 
                   }
+                  else{
+                    var initrect = this.parentElement.getBoundingClientRect();
+                    this.style.top = Math.round(initrect.top).toString()+"px";
+                    this.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
+                    var rect = this.getBoundingClientRect();
+                    if (rect.right > document.body.offsetWidth && Math.round(initrect.left - (rect.right-rect.left)) > 0){
+                      this.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
+                    }
+                  }
+                  
                   iframe.style.border = "solid";
                 }
                 this.prepend(iframe)
@@ -662,47 +670,38 @@ document.addEventListener("DOMContentLoaded", function(){
                 script.innerText = ``;
                 script.type = 'text/javascript';
                 body.appendChild(script);
+                
               }
               else{
-                this.firstElementChild.style.display = '';
-                
-                var initrect = this.getBoundingClientRect();
-                this.firstElementChild.style.top = Math.round(initrect.top).toString()+"px";
-                this.firstElementChild.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
-                
-                
-                var rect = this.firstElementChild.getBoundingClientRect();
-                if (rect.right > document.body.offsetWidth  && Math.round(initrect.left - (rect.right-rect.left)) > 0){
-                  this.firstElementChild.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
-                }
-                
+                if (!window.matchMedia('(hover: hover)').matches){
 
-                /*
-                if (this.parentElement.tagName.toLowerCase() == "sk"){
-                  if (rect.left + this.firstElementChild.contentWindow.document.body.offsetWidth > document.body.offsetWidth){
-                    iframe.style.left = Math.round(rect.left - (rect.right-rect.left) - 10).toString() + "px";
-                  }
-                  else{
-                    //iframe.style.left = Math.round(rect.left + this.parentElement.offsetWidth).toString() + "px";
-                  }
                 }
                 else{
-                  if (rect.left + this.firstElementChild.contentWindow.document.body.offsetWidth > document.body.offsetWidth){
-                    iframe.style.left = Math.round(rect.left - (rect.right-rect.left) - 10).toString() + "px";
+                  this.firstElementChild.style.display = '';
+                  if (!window.matchMedia('(hover: hover)').matches){
+                    this.style.top = "50%"
+                    this.style.left = "50%"
+                    this.style.transform = "translate(-50%,-50%)" 
                   }
                   else{
-                    //iframe.style.left = Math.round(rect.left + this.parentElement.offsetWidth - 30).toString() + "px";
+                    var initrect = this.getBoundingClientRect();
+                    this.firstElementChild.style.top = Math.round(initrect.top).toString()+"px";
+                    this.firstElementChild.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
+                    
+                    var rect = this.firstElementChild.getBoundingClientRect();
+                    if (rect.right > document.body.offsetWidth  && Math.round(initrect.left - (rect.right-rect.left)) > 0){
+                      this.firstElementChild.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
+                    }
                   }
-                }*/
-                
+                  
+                }                
               }
             };
-          elements[i].onmouseout = function(e) {
+
             
-              this.firstElementChild.style.display = 'none';
-            
-          
-          };
+            elements[i].onmouseout = function(e) {
+                this.firstElementChild.style.display = 'none';
+            };
           }
         }
         else {
