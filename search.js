@@ -636,23 +636,18 @@ document.addEventListener("DOMContentLoaded", function(){
 
           var elements = document.getElementsByClassName("sklink")
           for (let i = 0; i < elements.length; i++) {
-            elements[i].onmouseover = function(e) {
-              if (this.firstElementChild == null) {
-                var iframe = document.createElement("iframe")
-                iframe.setAttribute("src", "html_entries/"+slp12deva(this.getAttribute("href").slice(12))+".html")
-                iframe.style.position = "fixed";
-                iframe.style.zIndex = 2;
-                iframe.style.margin = 0;
-
-                iframe.style.border = 0;
-                iframe.style.height = "300px";
-                iframe.onload = function(){
-                  if (!window.matchMedia('(hover: hover)').matches){
-                    this.style.top = "50%"
-                    this.style.left = "50%"
-                    this.style.transform = "translate(-50%,-50%)" 
-                  }
-                  else{
+            if (window.matchMedia('(hover: hover)').matches){
+              elements[i].onmouseover = function(e) {
+                if (this.firstElementChild == null) {
+                  var iframe = document.createElement("iframe")
+                  iframe.setAttribute("src", "html_entries/"+slp12deva(this.getAttribute("href").slice(12))+".html")
+                  iframe.style.position = "fixed";
+                  iframe.style.zIndex = 2;
+                  iframe.style.margin = 0;
+  
+                  iframe.style.border = 0;
+                  iframe.style.height = "300px";
+                  iframe.onload = function(){
                     var initrect = this.parentElement.getBoundingClientRect();
                     this.style.top = Math.round(initrect.top).toString()+"px";
                     this.style.left = Math.round(initrect.left+(initrect.right-initrect.left)).toString()+"px";
@@ -660,21 +655,15 @@ document.addEventListener("DOMContentLoaded", function(){
                     if (rect.right > document.body.offsetWidth && Math.round(initrect.left - (rect.right-rect.left)) > 0){
                       this.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
                     }
-                  }
-                  
                   iframe.style.border = "solid";
-                }
-                this.prepend(iframe)
-                var body = iframe.contentWindow.document.getElementsByTagName('body')[0];
-                var script = iframe.contentWindow.document.createElement('script');
-                script.innerText = ``;
-                script.type = 'text/javascript';
-                body.appendChild(script);
-                
-              }
-              else{
-                if (!window.matchMedia('(hover: hover)').matches){
-
+                  }
+                  this.prepend(iframe)
+                  var body = iframe.contentWindow.document.getElementsByTagName('body')[0];
+                  var script = iframe.contentWindow.document.createElement('script');
+                  script.innerText = ``;
+                  script.type = 'text/javascript';
+                  body.appendChild(script);
+                  
                 }
                 else{
                   this.firstElementChild.style.display = '';
@@ -692,16 +681,14 @@ document.addEventListener("DOMContentLoaded", function(){
                     if (rect.right > document.body.offsetWidth  && Math.round(initrect.left - (rect.right-rect.left)) > 0){
                       this.firstElementChild.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
                     }
-                  }
-                  
-                }                
-              }
-            };
-
+                  }        
+                }
+              };
+              elements[i].onmouseout = function(e) {
+                  this.firstElementChild.style.display = 'none';
+              };
+            }
             
-            elements[i].onmouseout = function(e) {
-                this.firstElementChild.style.display = 'none';
-            };
           }
         }
         else {
