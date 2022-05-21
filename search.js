@@ -562,7 +562,8 @@ document.addEventListener("DOMContentLoaded", function(){
           dataDiv.innerHTML = htmlDef.body.innerHTML;
           
           var definitionDiv = document.getElementById("definition");
-
+          var titleDiv = document.getElementById("title");
+          titleDiv.innerHTML = "Super Monier — " + searchQueryDeva;
           var elements = definitionDiv.getElementsByTagName("ab")
           
           for(let i = 0; i < elements.length; i++){
