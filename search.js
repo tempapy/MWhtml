@@ -523,8 +523,13 @@ document.addEventListener("DOMContentLoaded", function(){
     
 
     if (searchQueryDeva != ""){
+
+      // Get STC definition
+      var address = "stc/html_entries/"+searchQueryDeva+".html";
+      
+      var iframeDiv = document.getElementById("iframe");
+      /*
       var client = new XMLHttpRequest();
-      var address = "stc/html_entries/"+searchQueryDeva+".html"
       client.onreadystatechange = function() {
        // in case of network errors this might not give reliable results
        if(this.readyState == 4)
@@ -543,10 +548,30 @@ document.addEventListener("DOMContentLoaded", function(){
       }
       client.open("HEAD", address);
       client.send();
-  
+      */
       
-
-
+      fetch(address)
+      .then(function (response) {
+          switch (response.status) {
+              // status "OK"
+              case 200:
+                  return response.text();
+              // status "Not Found"
+              case 404:
+                  throw response;
+          }
+      })
+      .then(function (response) {
+          var iframe = document.createElement("iframe");
+          iframe.setAttribute("src", address);
+          iframe.setAttribute("style", "width: 100%;margin:0;padding:0;");
+          iframeDiv.appendChild(iframe);
+      })
+      .catch(function (response) {
+          // "Not Found"
+          iframeDiv.innerHTML="(Absent du Stchoupak.)";
+      });
+      // Strip header
 
       var requestURL = 'html_entries/'+searchQueryDeva+'.html';
       var request = new XMLHttpRequest();
@@ -556,7 +581,6 @@ document.addEventListener("DOMContentLoaded", function(){
       request.onload = function() {
       var htmlDef = request.response;
         if ((htmlDef != null)&&(htmlDef.getElementById("definition")!=null)){
-          console.log(htmlDef)
           // Add definition to HTML
           wordDiv.innerHTML = searchQueryDeva;
           dataDiv.innerHTML = htmlDef.body.innerHTML;
