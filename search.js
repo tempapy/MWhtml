@@ -659,6 +659,12 @@ document.addEventListener("DOMContentLoaded", function(){
             };
           }
 
+          var elements = document.getElementsByClassName("pc")
+          for (let i = 0; i < elements.length; i++) elements[i].href="https://www.sanskrit-lexicon.uni-koeln.de/scans/csl-apidev/servepdf.php?dict=MW&page="+elements[i].getAttribute("href").slice(20);
+
+          var elements = document.getElementsByClassName("root")
+          for (let i = 0; i < elements.length; i++) elements[i].href="https://www.sanskrit-lexicon.uni-koeln.de/scans/csl-whitroot/disp/index.php?page="+elements[i].getAttribute("href").slice(23);
+
           var elements = document.getElementsByClassName("sklink")
           for (let i = 0; i < elements.length; i++) elements[i].href="?searchdeva="+elements[i].getAttribute("href").slice(0, -5);
 

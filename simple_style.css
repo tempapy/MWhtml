@@ -173,7 +173,7 @@ en a{
     pointer-events: none; /*disable MWen links*/
 }
 
-pc a, a.root{
+a.pc, a.root{
     text-decoration: none;
     vertical-align: super!important;
     font-size: 70%!important;

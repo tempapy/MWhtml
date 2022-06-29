@@ -33,6 +33,7 @@
         --gendercolor: gold;
         --dropdownbg: #303030;
         --dropdowncolor: white;
+        --txtlightcolor: darkgray;
     }
 }
 @media (prefers-color-scheme: light) {   
@@ -44,14 +45,15 @@
         --gendercolor:goldenrod;
         --dropdownbg: #E0E0E0;
         --dropdowncolor: black;
+        --txtlightcolor: gray;
     }
 }
 
 body{
     background-color:var(--bgcolor);
     color:var(--txtcolor);
-    --txtlightcolor: dimgray;
-    --refcolor: rgb(128, 128, 192);
+    
+    --refcolor: mediumpurple;
     font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif;
     
 }
@@ -61,37 +63,7 @@ lex{
     color:var(--gendercolor)
 }
 
-.box{
-    margin: auto;
-    grid-template-columns: auto;
-    max-width: 40em;
-    display: grid;
-    grid-column-gap: 0.2em;
-    grid-row-gap: 0.2em;
-}
-#header{
-    min-width: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction:row;
-    height: 100%;
-    height: 2em;
-    font-size: 2em; 
-    justify-content: space-between;
-    line-height:1em;
-    grid-column-gap: 0.2em;
-}
-#searchbar{
-    min-width: 0;
-    display: flex;
-    flex-direction:row;
-    font-size: 1em;
-    height: 1em;
-}
-#search{
-    min-width: 0;
-}
+
 .dropdown{
     text-decoration: inherit;
     text-align:left;
@@ -102,7 +74,8 @@ s1 .dropdown{
     text-decoration: underline;
     -webkit-text-decoration-line: underline;
 }
-
+#word{
+}
 #definition{
     margin-left: -1em;
     /*position: relative; 
@@ -117,7 +90,7 @@ sk {
 sk a{
     font-style: inherit;
     color:inherit;
-    text-decoration: none;
+    text-decoration: inherit;
 }
 s1 a{
     font-style: inherit;
@@ -200,14 +173,25 @@ en a{
     pointer-events: none; /*disable MWen links*/
 }
 
-pc a, a.root{
+a.pc, a.root{
     text-decoration: none;
     vertical-align: super!important;
     font-size: 70%!important;
-    color: grey!important;
+    color: var(--txtlightcolor)!important;
     
 }
+/*
+html, body { scrollbar-width: none; }*/
 
 etym {
     font-style: italic;
 }
+
+hom {
+    color : var(--txtlightcolor);
+}
+
+ul li ul{
+    padding-left: 1em;
+  }
+
