@@ -660,6 +660,11 @@ document.addEventListener("DOMContentLoaded", function(){
           }
 
           var elements = document.getElementsByClassName("sklink")
+          for (let i = 0; i < elements.length; i++) elements[i].href="?searchdeva="+elements[i].getAttribute("href").slice(0, -5);
+
+
+
+          var elements = document.getElementsByClassName("sklink")
           for (let i = 0; i < elements.length; i++) {
             if (window.matchMedia('(hover: hover)').matches){
               elements[i].onmouseover = function(e) {
