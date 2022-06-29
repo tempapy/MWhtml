@@ -473,7 +473,7 @@ var inputInput = document.getElementById("inputType");
 inputInput.onclick = function() {
   //this.attr("disabled", "true");
   localStorage.setItem('inputType', inputInput.value);
-  console.log(inputInput.value)
+  console.log("on udpate", inputInput.value)
 };
 
 // Search json DB and send text data to html
@@ -482,6 +482,7 @@ document.addEventListener("DOMContentLoaded", function(){
   // Load previous input type:
   if (localStorage.getItem('inputType') != null){
     inputInput.value = localStorage.getItem('inputType');
+    console.log("on load", inputInput.value)
   }
   
 
@@ -508,14 +509,14 @@ document.addEventListener("DOMContentLoaded", function(){
     searchQuery = hk2slp1(iast2hk(searchQuery));
     var searchQueryDeva = slp12deva(searchQuery);
   } 
-
+/*
   else{
     var searchQueryDeva = slp12deva(searchQuery);
     if (inputInput.value == "hk") searchInput.value = iast2hk(slp12iast(searchQuery));
     else if (inputInput.value == "iast") searchInput.value = slp12iast(searchQuery);
     else if (inputInput.value == "deva") searchInput.value = slp12deva(searchQuery);
   }
-  
+  */
   if ((searchQuery != "") && (searchQuery != null)){
     headerDiv.style.margin = "unset";
     // CODE :
@@ -586,6 +587,11 @@ document.addEventListener("DOMContentLoaded", function(){
           dataDiv.innerHTML = htmlDef.body.innerHTML;
           
           var definitionDiv = document.getElementById("definition");
+          
+          if (inputInput.value == "hk") searchInput.value = iast2hk(slp12iast(definitionDiv.getAttribute('slp1')));
+          else if (inputInput.value == "iast") searchInput.value = slp12iast(definitionDiv.getAttribute('slp1'));
+          else if (inputInput.value == "deva") searchInput.value = slp12deva(definitionDiv.getAttribute('slp1'));
+
           var titleDivs = document.getElementsByTagName("title");
           titleDivs[0].innerHTML = "Super Monier — " + searchQueryDeva;
           var elements = definitionDiv.getElementsByTagName("ab")
