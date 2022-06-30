@@ -674,8 +674,16 @@ document.addEventListener("DOMContentLoaded", function(){
           var elements = document.getElementsByClassName("sklink")
           for (let i = 0; i < elements.length; i++) elements[i].href="?searchdeva="+elements[i].getAttribute("href").slice(0, -5);
 
-
-
+          var element = document.getElementById("next")
+          element.firstChild.href="?searchdeva="+element.firstChild.href.slice(0, -5);
+          var element = document.getElementById("prev")
+          element.firstChild.href="?searchdeva="+element.firstChild.href.slice(0, -5);
+           /* 
+          var elements = document.getElementsByClassName("children")
+          for (let i = 0; i < elements.length; i++){
+            var links = element
+          } 
+          */
           var elements = document.getElementsByClassName("sklink")
           for (let i = 0; i < elements.length; i++) {
             if (window.matchMedia('(hover: hover)').matches){
