@@ -34,6 +34,7 @@
         --dropdownbg: #303030;
         --dropdowncolor: white;
         --txtlightcolor: darkgray;
+        --refcolor: plum;
     }
 }
 @media (prefers-color-scheme: light) {   
@@ -46,16 +47,14 @@
         --dropdownbg: #E0E0E0;
         --dropdowncolor: black;
         --txtlightcolor: gray;
+        --refcolor: plum;
     }
 }
 
 body{
     background-color:var(--bgcolor);
     color:var(--txtcolor);
-    
-    --refcolor: mediumpurple;
-    font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif;
-    
+    font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
 }
 
 
