@@ -430,9 +430,12 @@ document.onclick = function(e) {
   if (!window.matchMedia('(hover: hover)').matches){
     allDropDowns = document.getElementsByClassName("dropdown");
     for(let i = 0; i < allDropDowns.length; i++){
-      if (allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display == "block"){
-        allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display = "none";
+      if (allDropDowns[i].getElementsByClassName("dropdowncontent").length){
+        if (allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display == "block"){
+          allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display = "none";
+        }
       }
+      
       if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "yellow"){
         allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
       }
@@ -638,18 +641,25 @@ document.addEventListener("DOMContentLoaded", function(){
                 allDropDowns = document.getElementsByClassName("dropdown");
                 
               for(let i = 0; i < allDropDowns.length; i++){
-                if (allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display == "block"){
-                  allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display = "none";
+                if (allDropDowns[i].getElementsByClassName("dropdowncontent").length) {
+                  if (allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display == "block"){
+                    allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display = "none";
+                  }
                 }
                 if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "yellow"){
                   allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
                 }
+                
+                
               
               }
+              if (this.getElementsByClassName("dropdowncontent").length){
                 if (this.getElementsByClassName("dropdowncontent")[0].style.display == "none"){
                   
                   this.getElementsByClassName("dropdowncontent")[0].style.display = "block";
                 }
+              }
+                
                 // else{
                 //   this.getElementsByClassName("dropdowncontent")[0].style.display = "none";
                 // }
