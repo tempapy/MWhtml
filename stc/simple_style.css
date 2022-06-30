@@ -14,7 +14,7 @@
     body{
         --bgcolor: #EEEEEE;
         --txtcolor: black;
-        --sanskritcolor:darkturquoise;
+        --sanskritcolor:rgb(0, 174, 177);
         --gendercolor:goldenrod;
         --dropdownbg: #E0E0E0;
         --dropdowncolor: black;
