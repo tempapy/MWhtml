@@ -675,15 +675,23 @@ document.addEventListener("DOMContentLoaded", function(){
           for (let i = 0; i < elements.length; i++) elements[i].href="?searchdeva="+elements[i].getAttribute("href").slice(0, -5);
 
           var element = document.getElementById("next")
-          element.firstChild.href="?searchdeva="+element.firstChild.href.slice(0, -5);
+          console.log(element.firstChild)
+          element.firstChild.href="?searchdeva="+element.firstChild.getAttribute("href").slice(0, -5);
           var element = document.getElementById("prev")
-          element.firstChild.href="?searchdeva="+element.firstChild.href.slice(0, -5);
-           /* 
+          element.firstChild.href="?searchdeva="+element.firstChild.getAttribute("href").slice(0, -5);
+           
           var elements = document.getElementsByClassName("children")
           for (let i = 0; i < elements.length; i++){
-            var links = element
+            var links = elements[i].children
+            for (let j = 0; j < links.length; j++) links[j].href ="?searchdeva="+ links[j].getAttribute("href").slice(0, -5);
           } 
-          */
+
+          var elements = document.getElementsByClassName("parents")
+          for (let i = 0; i < elements.length; i++){
+            var links = elements[i].children
+            for (let j = 0; j < links.length; j++) links[j].href ="?searchdeva="+ links[j].getAttribute("href").slice(0, -5);
+          } 
+          
           var elements = document.getElementsByClassName("sklink")
           for (let i = 0; i < elements.length; i++) {
             if (window.matchMedia('(hover: hover)').matches){
