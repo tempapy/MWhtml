@@ -685,7 +685,7 @@ document.addEventListener("DOMContentLoaded", function(){
           for (let i = 0; i < elements.length; i++) elements[i].href="?searchdeva="+elements[i].getAttribute("href").slice(0, -5);
 
           var element = document.getElementById("next")
-          console.log(element.firstChild)
+          
           element.firstChild.href="?searchdeva="+element.firstChild.getAttribute("href").slice(0, -5);
           var element = document.getElementById("prev")
           element.firstChild.href="?searchdeva="+element.firstChild.getAttribute("href").slice(0, -5);
