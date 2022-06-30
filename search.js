@@ -473,7 +473,7 @@ goInput.onclick = function () {
 
 // Choose input type
 var inputInput = document.getElementById("inputType");
-inputInput.onclick = function() {
+inputInput.onchange = function() {
   //this.attr("disabled", "true");
   localStorage.setItem('inputType', inputInput.value);
   console.log("on udpate", inputInput.value)
