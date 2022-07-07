@@ -54,7 +54,7 @@
 body{
     background-color:var(--bgcolor);
     color:var(--txtcolor);
-    font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
+    font-family: 'Charis SIL', 'CharisSIL-woff', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
 }
 
 

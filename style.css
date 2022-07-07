@@ -1,29 +1,29 @@
-/*
+
 @font-face {
-    font-family: CharisSILW;
+    font-family: CharisSIL-woff;
     src: url(fonts/CharisSIL-Regular.woff2),
     url(fonts/CharisSIL-Regular.woff);
   }
   @font-face {
-    font-family: CharisSILW;
+    font-family: CharisSIL-woff;
     font-style: italic;
     src: url(fonts/CharisSIL-Italic.woff2),
     url(fonts/CharisSIL-Italic.woff);
   }
   @font-face {
-      font-family: CharisSILW;
+      font-family: CharisSIL-woff;
       font-weight: bold;
       src: url(fonts/CharisSIL-Bold.woff2),
       url(fonts/CharisSIL-Bold.woff);
   }
   @font-face {
-      font-family: CharisSILW;
+      font-family: CharisSIL-woff;
       font-weight: bold;
       font-style: italic;
       src: url(fonts/CharisSIL-BoldItalic.woff2),
       url(fonts/CharisSIL-BoldItalic.woff);
   }
-*/
+
 @media (prefers-color-scheme: dark) {   
     /* YOUR DARK THEME RULES */ 
     body{
@@ -54,7 +54,7 @@
 body{
     background-color:var(--bgcolor);
     color:var(--txtcolor);
-    font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
+    font-family: 'Charis SIL', 'CharisSIL-woff', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
 }
 
 

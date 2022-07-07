@@ -600,18 +600,20 @@ document.addEventListener("DOMContentLoaded", function(){
           var elements = definitionDiv.getElementsByTagName("ab")
           
           for(let i = 0; i < elements.length; i++){
-            elements[i].onclick = function(e){
-              if ((!this.hasAttribute("expanded"))){
-                this.setAttribute("expanded", this.textContent);
-                this.textContent = this.getAttribute("title");
-              }
-              else {
-                
-                this.textContent = this.getAttribute("expanded");
-                this.removeAttribute("expanded");
-              }
-              //e.stopPropagation();
-            };
+            if (elements[i].children.length == 0){
+              elements[i].onclick = function(e){
+                if ((!this.hasAttribute("expanded"))){
+                  this.setAttribute("expanded", this.textContent);
+                  this.textContent = this.getAttribute("title");
+                }
+                else {
+                  
+                  this.textContent = this.getAttribute("expanded");
+                  this.removeAttribute("expanded");
+                }
+                //e.stopPropagation();
+              };
+            }
             
           }
 
