@@ -573,8 +573,10 @@ document.addEventListener("DOMContentLoaded", function(){
       })
       .catch(function (response) {
           // "Not Found"
-          iframeDiv.innerHTML="Absent du Stchoupak. Les noms à plusieurs thèmes, à finale consonantique, les dénominatifs, etc. ne sont pas forcément listés sous la même entrée entre les deux dictionnaires. ";
-          iframeDiv.style.border = 'solid';
+          iframeDiv.innerHTML="Absent du Stchoupak. Les noms à plusieurs thèmes, à finale consonantique, les mots composés, les dénominatifs, etc. ne sont pas forcément listés sous la même entrée entre les deux dictionnaires. ";
+          iframeDiv.style.border = 'dotted';
+          iframeDiv.style.borderWidth = '0.15em';
+          iframeDiv.style.padding = '0.5em';
         });
       // Strip header
 
@@ -726,6 +728,10 @@ document.addEventListener("DOMContentLoaded", function(){
                     if (rect.right > document.body.offsetWidth && Math.round(initrect.left - (rect.right-rect.left)) > 0){
                       this.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
                     }
+                    if (rect.bottom > document.body.offsetHeight && Math.round(initrect.top - (rect.bottom-rect.top)) > 0){
+                      this.style.top = Math.round(initrect.top - (rect.bottom-rect.top)).toString()+"px"
+                    }
+
                   iframe.style.border = "solid";
                   }
                   this.prepend(iframe)
@@ -751,6 +757,9 @@ document.addEventListener("DOMContentLoaded", function(){
                     var rect = this.firstElementChild.getBoundingClientRect();
                     if (rect.right > document.body.offsetWidth  && Math.round(initrect.left - (rect.right-rect.left)) > 0){
                       this.firstElementChild.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
+                    }
+                    if (rect.bottom > document.body.offsetHeight && Math.round(initrect.top - (rect.bottom-rect.top)) > 0){
+                      this.firstElementChild.style.top = Math.round(initrect.top - (rect.bottom-rect.top)).toString()+"px"
                     }
                   }        
                 }
