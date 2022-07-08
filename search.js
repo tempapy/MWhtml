@@ -573,7 +573,7 @@ document.addEventListener("DOMContentLoaded", function(){
       })
       .catch(function (response) {
           // "Not Found"
-          iframeDiv.innerHTML="(Absent du Stchoupak.)";
+          iframeDiv.innerHTML="Absent du Stchoupak. Les noms à plusieurs thèmes ne sont pas forcément listés sous la même entrée entre les deux dictionnaires, notamment les participes présents (-at- dans MW, -ant- dans le Stchoupak). Même chose pour les mots à finales consonantiques, où le sandhi à la pose peut avoir été appliqué à l'un mais pas à l'autre. Les dénominatifs sont à la 3e pers. sg. du présent dans le Stchoupak. ";
       });
       // Strip header
 
@@ -764,7 +764,7 @@ document.addEventListener("DOMContentLoaded", function(){
         else {
           console.log("not found")
           headerDiv.style.margin = "auto";
-          dataDiv.innerHTML = "<div style='text-align:center;'>The word "+slp12iast(searchQuery)+" was not found.</div><br>";
+          dataDiv.innerHTML = "<div style='text-align:center;'>The word "+slp12iast(searchQuery)+" was not found. If it is a consonant-ending word, try with/without sandhi. If it is a noun with stem gradation, try another grade. If it is a denominative verbs, search the -aya- stem or just the radical (i.e. the noun). </div><br>";
         }
       }
     }
