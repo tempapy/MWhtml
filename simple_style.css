@@ -1,29 +1,35 @@
-/*
+
+
 @font-face {
-    font-family: CharisSILW;
-    src: url(fonts/CharisSIL-Regular.woff2),
-    url(fonts/CharisSIL-Regular.woff);
+    font-family: CharisSIL-woff;
+    font-style: normal;
+    src: url(fonts/CharisSIL-Regular.woff2) format('woff2'),
+    url(fonts/CharisSIL-Regular.woff) format('woff');
+    font-display: swap;
   }
   @font-face {
-    font-family: CharisSILW;
+    font-family: CharisSIL-woff;
     font-style: italic;
-    src: url(fonts/CharisSIL-Italic.woff2),
-    url(fonts/CharisSIL-Italic.woff);
+    src: url(fonts/CharisSIL-Italic.woff2) format('woff2'),
+    url(fonts/CharisSIL-Italic.woff) format('woff');
+    font-display: swap;
   }
   @font-face {
-      font-family: CharisSILW;
+      font-family: CharisSIL-woff;
       font-weight: bold;
-      src: url(fonts/CharisSIL-Bold.woff2),
-      url(fonts/CharisSIL-Bold.woff);
+      src: url(fonts/CharisSIL-Bold.woff2) format('woff2'),
+      url(fonts/CharisSIL-Bold.woff) format('woff');
+      font-display: swap;
   }
   @font-face {
-      font-family: CharisSILW;
+      font-family: CharisSIL-woff;
       font-weight: bold;
       font-style: italic;
-      src: url(fonts/CharisSIL-BoldItalic.woff2),
-      url(fonts/CharisSIL-BoldItalic.woff);
+      src: url(fonts/CharisSIL-BoldItalic.woff2) format('woff2'),
+      url(fonts/CharisSIL-BoldItalic.woff) format('woff');
+      font-display: swap;
   }
-*/
+
 @media (prefers-color-scheme: dark) {   
     /* YOUR DARK THEME RULES */ 
     body{
@@ -47,7 +53,7 @@
         --dropdownbg: #E0E0E0;
         --dropdowncolor: black;
         --txtlightcolor: gray;
-        --refcolor: plum;
+        --refcolor: orchid;
     }
 }
 
@@ -56,7 +62,6 @@ body{
     color:var(--txtcolor);
     font-family: 'Charis SIL', 'CharisSIL-woff', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
 }
-
 
 lex{
     color:var(--gendercolor)
