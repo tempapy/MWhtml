@@ -1,3 +1,41 @@
+
+@font-face {
+    font-family: Charis SIL;
+    src: local('Charis SIL'),
+    url(../fonts/CharisSIL-Regular.woff2) format('woff2'),
+    url(../fonts/CharisSIL-Regular.woff) format('woff');
+    font-display: swap;
+    size-adjust:96%;
+  }
+  @font-face {
+    font-family: Charis SIL;
+    font-style: italic;
+    src: local('Charis SIL'),
+    url(../fonts/CharisSIL-Italic.woff2) format('woff2'),
+    url(../fonts/CharisSIL-Italic.woff) format('woff');
+    font-display: swap;
+    size-adjust:96%;
+  }
+  @font-face {
+      font-family: Charis SIL;
+      font-weight: bold;
+      src: local('Charis SIL'),
+      url(../fonts/CharisSIL-Bold.woff2) format('woff2'),
+      url(../fonts/CharisSIL-Bold.woff) format('woff');
+      font-display: swap;
+      size-adjust:96%;
+  }
+  @font-face {
+      font-family: Charis SIL;
+      font-weight: bold;
+      font-style: italic;
+      src: local('Charis SIL'),
+      url(../fonts/CharisSIL-BoldItalic.woff2) format('woff2'),
+      url(../fonts/CharisSIL-BoldItalic.woff) format('woff');
+      font-display: swap;
+      size-adjust:96%;
+  }
+
 @media (prefers-color-scheme: dark) {   
     /* YOUR DARK THEME RULES */ 
     body{
@@ -7,6 +45,8 @@
         --gendercolor: gold;
         --dropdownbg: #303030;
         --dropdowncolor: white;
+        --txtlightcolor: darkgray;
+        --refcolor: plum;
     }
 }
 @media (prefers-color-scheme: light) {   
@@ -14,21 +54,27 @@
     body{
         --bgcolor: #EEEEEE;
         --txtcolor: black;
-        --sanskritcolor:darkturquoise;
+        --sanskritcolor:rgb(0, 174, 177);
         --gendercolor:goldenrod;
         --dropdownbg: #E0E0E0;
         --dropdowncolor: black;
+        --txtlightcolor: gray;
+        --refcolor: orchid;
     }
 }
 
 body{
     background-color:var(--bgcolor);
     color:var(--txtcolor);
-    --txtlightcolor: dimgray;
-    --refcolor: rgb(128, 128, 192);
-    font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif;
-    
+    font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
 }
+
+@media (max-width: 600px) {
+    body{
+        line-height: 1.4em;
+    }
+}
+
 
 .dropdown{
     text-decoration: inherit;

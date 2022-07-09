@@ -1,33 +1,39 @@
 
-
 @font-face {
-    font-family: CharisSIL-woff;
-    font-style: normal;
-    src: url(fonts/CharisSIL-Regular.woff2) format('woff2'),
+    font-family: Charis SIL;
+    src: local('Charis SIL'),
+    url(fonts/CharisSIL-Regular.woff2) format('woff2'),
     url(fonts/CharisSIL-Regular.woff) format('woff');
     font-display: swap;
+    size-adjust:96%;
   }
   @font-face {
-    font-family: CharisSIL-woff;
+    font-family: Charis SIL;
     font-style: italic;
-    src: url(fonts/CharisSIL-Italic.woff2) format('woff2'),
+    src: local('Charis SIL'),
+    url(fonts/CharisSIL-Italic.woff2) format('woff2'),
     url(fonts/CharisSIL-Italic.woff) format('woff');
     font-display: swap;
+    size-adjust:96%;
   }
   @font-face {
-      font-family: CharisSIL-woff;
+      font-family: Charis SIL;
       font-weight: bold;
-      src: url(fonts/CharisSIL-Bold.woff2) format('woff2'),
+      src: local('Charis SIL'),
+      url(fonts/CharisSIL-Bold.woff2) format('woff2'),
       url(fonts/CharisSIL-Bold.woff) format('woff');
       font-display: swap;
+      size-adjust:96%;
   }
   @font-face {
-      font-family: CharisSIL-woff;
+      font-family: Charis SIL;
       font-weight: bold;
       font-style: italic;
-      src: url(fonts/CharisSIL-BoldItalic.woff2) format('woff2'),
+      src: local('Charis SIL'),
+      url(fonts/CharisSIL-BoldItalic.woff2) format('woff2'),
       url(fonts/CharisSIL-BoldItalic.woff) format('woff');
       font-display: swap;
+      size-adjust:96%;
   }
 
 @media (prefers-color-scheme: dark) {   
@@ -60,8 +66,15 @@
 body{
     background-color:var(--bgcolor);
     color:var(--txtcolor);
-    font-family: 'Charis SIL', 'CharisSIL-woff', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
+    font-family: 'Charis SIL', 'Gentium Plus', 'Cambria', 'Times New Roman', 'Arial', serif; 
 }
+
+@media (max-width: 600px) {
+    body{
+        line-height: 1.4em;
+    }
+}
+
 
 lex{
     color:var(--gendercolor)
