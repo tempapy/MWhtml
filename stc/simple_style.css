@@ -2,30 +2,30 @@
 @font-face {
     font-family: CharisSIL-woff;
     font-style: normal;
-    src: url(fonts/CharisSIL-Regular.woff2) format('woff2'),
-    url(fonts/CharisSIL-Regular.woff) format('woff');
+    src: url(../fonts/CharisSIL-Regular.woff2) format('woff2'),
+    url(../fonts/CharisSIL-Regular.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: CharisSIL-woff;
     font-style: italic;
-    src: url(fonts/CharisSIL-Italic.woff2) format('woff2'),
-    url(fonts/CharisSIL-Italic.woff) format('woff');
+    src: url(../fonts/CharisSIL-Italic.woff2) format('woff2'),
+    url(../fonts/CharisSIL-Italic.woff) format('woff');
     font-display: swap;
   }
   @font-face {
       font-family: CharisSIL-woff;
       font-weight: bold;
-      src: url(fonts/CharisSIL-Bold.woff2) format('woff2'),
-      url(fonts/CharisSIL-Bold.woff) format('woff');
+      src: url(../fonts/CharisSIL-Bold.woff2) format('woff2'),
+      url(../fonts/CharisSIL-Bold.woff) format('woff');
       font-display: swap;
   }
   @font-face {
       font-family: CharisSIL-woff;
       font-weight: bold;
       font-style: italic;
-      src: url(fonts/CharisSIL-BoldItalic.woff2) format('woff2'),
-      url(fonts/CharisSIL-BoldItalic.woff) format('woff');
+      src: url(../fonts/CharisSIL-BoldItalic.woff2) format('woff2'),
+      url(../fonts/CharisSIL-BoldItalic.woff) format('woff');
       font-display: swap;
   }
 

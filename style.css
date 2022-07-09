@@ -2,8 +2,7 @@
 @font-face {
     font-family: CharisSIL-woff;
     font-style: normal;
-    src: local('Charis SIL'), 
-    url(fonts/CharisSIL-Regular.woff2) format('woff2'),
+    src: url(fonts/CharisSIL-Regular.woff2) format('woff2'),
     url(fonts/CharisSIL-Regular.woff) format('woff');
     font-display: swap;
   }
