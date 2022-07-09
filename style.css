@@ -10,7 +10,7 @@
   @font-face {
     font-family: Charis SIL;
     font-style: italic;
-    src: local('Charis SIL'),
+    src: local('Charis SIL Italic'),
     url(fonts/CharisSIL-Italic.woff2) format('woff2'),
     url(fonts/CharisSIL-Italic.woff) format('woff');
     font-display: swap;
@@ -19,7 +19,7 @@
   @font-face {
       font-family: Charis SIL;
       font-weight: bold;
-      src: local('Charis SIL'),
+      src: local('Charis SIL Bold'),
       url(fonts/CharisSIL-Bold.woff2) format('woff2'),
       url(fonts/CharisSIL-Bold.woff) format('woff');
       font-display: swap;
@@ -29,7 +29,7 @@
       font-family: Charis SIL;
       font-weight: bold;
       font-style: italic;
-      src: local('Charis SIL'),
+      src: local('Charis SIL Bold Italic'),
       url(fonts/CharisSIL-BoldItalic.woff2) format('woff2'),
       url(fonts/CharisSIL-BoldItalic.woff) format('woff');
       font-display: swap;
