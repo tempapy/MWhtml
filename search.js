@@ -774,7 +774,8 @@ document.addEventListener("DOMContentLoaded", function(){
         else {
           console.log("not found")
           headerDiv.style.margin = "auto";
-          dataDiv.innerHTML = "<div>The word "+slp12iast(searchQuery)+" was not found. If it is a consonant-ending word, try with/without sandhi. If it is a noun with stem gradation, try another grade. If it is a denominative verbs, search the -aya- stem or just the radical (i.e. the noun). </div><br>";
+          dataDiv.innerHTML = "<br><div>The word "+slp12iast(searchQuery)+" was not found. </div><br>";
+        /*If it is a consonant-ending word, try with/without sandhi. If it is a noun with stem gradation, try another grade. If it is a denominative verb, search the -aya- stem or just the radical (i.e. the noun).*/
         }
       }
     }
