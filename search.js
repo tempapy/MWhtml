@@ -729,7 +729,7 @@ document.addEventListener("DOMContentLoaded", function(){
                       this.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
                     }
                     if (rect.bottom > document.body.offsetHeight && Math.round(initrect.top - (rect.bottom-rect.top)) > 0){
-                      this.style.top = Math.round(initrect.top - (rect.bottom-rect.top)).toString()+"px"
+                      this.style.top = Math.round(initrect.top - (rect.bottom-rect.top)+50).toString()+"px"
                     }
 
                   iframe.style.border = "solid";
@@ -759,7 +759,7 @@ document.addEventListener("DOMContentLoaded", function(){
                       this.firstElementChild.style.left = Math.round(initrect.left - (rect.right-rect.left)).toString()+"px"
                     }
                     if (rect.bottom > document.body.offsetHeight && Math.round(initrect.top - (rect.bottom-rect.top)) > 0){
-                      this.firstElementChild.style.top = Math.round(initrect.top - (rect.bottom-rect.top)).toString()+"px"
+                      this.firstElementChild.style.top = Math.round(initrect.top - (rect.bottom-rect.top)+50).toString()+"px"
                     }
                   }        
                 }
