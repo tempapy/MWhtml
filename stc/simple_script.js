@@ -1,7 +1,9 @@
 
+var elements = document.getElementsByClassName("pc")
+for (let i = 0; i < elements.length; i++) elements[i].href="https://www.sanskrit-lexicon.uni-koeln.de/scans/csl-apidev/servepdf.php?dict=STC&page="+elements[i].getAttribute("href").slice(21);
 
 
-
+/*
 var elements = document.getElementsByTagName("a")
 				
 for(let i = 0; i < elements.length; i++){
@@ -20,3 +22,4 @@ for(let i = 0; i < elements.length; i++){
 	}
 	
 }
+*/
