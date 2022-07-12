@@ -4,7 +4,7 @@ for (let i = 0; i < elements.length; i++) elements[i].href="https://www.sanskrit
 
 
 var elements = document.getElementsByTagName("a")
-for (let i = 0; i < elements.length; i++) elements[i].target="_parent";
+if (elements[i].href.includes("page=")) for (let i = 0; i < elements.length; i++) elements[i].target="_parent";
 /*
 var elements = document.getElementsByTagName("a")
 				
