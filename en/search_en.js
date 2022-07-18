@@ -469,7 +469,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		searchInput.value = searchQuery;
   
 		if (searchQuery != ""){
-			var requestURL = 'html_entries/'+searchQuery+'.html';
+			var requestURL = 'html_entries/_'+searchQuery+'.html';
 			var request = new XMLHttpRequest();
 			request.open('GET', requestURL);
 			request.responseType = 'document';
