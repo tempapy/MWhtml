@@ -454,7 +454,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		searchInput.value = searchQuery;
   
 		if (searchQuery != ""){
-			var requestURL = 'html_entries/_'+searchQuery+'.html'; // "_" to avoid "con.html" windows problem
+			var requestURL = 'html_entries/mwe_'+searchQuery+'.html'; // "_" to avoid "con.html" windows problem
 			var request = new XMLHttpRequest();
 			request.open('GET', requestURL);
 			request.responseType = 'document';
