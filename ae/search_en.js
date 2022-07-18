@@ -476,7 +476,7 @@ document.addEventListener("DOMContentLoaded", function(){
 				for(let i = 0; i < elements.length; i++){
 				}*/
 				var elements = document.getElementsByClassName("pc")
-				for (let i = 0; i < elements.length; i++) elements[i].href="https://www.sanskrit-lexicon.uni-koeln.de/scans/csl-apidev/servepdf.php?dict=BOR&page="+elements[i].getAttribute("href").slice(20);
+				for (let i = 0; i < elements.length; i++) elements[i].href="https://www.sanskrit-lexicon.uni-koeln.de/scans/csl-apidev/servepdf.php?dict=AE&page="+elements[i].getAttribute("href").slice(20);
 
 
 			}
