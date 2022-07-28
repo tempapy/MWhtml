@@ -520,6 +520,46 @@ document.addEventListener("DOMContentLoaded", function(){
     else if (inputInput.value == "deva") searchInput.value = slp12deva(searchQuery);
   }
   */
+
+
+  var wilInput = document.getElementById("wilButton");
+  wilInput.onclick = function () {
+    
+    var deva_consonants = "";
+        for (c in slp12deva_table.consonants){
+          deva_consonants += slp12deva_table.consonants[c];
+        }
+    var address_wil = "wil/html_entries/"+searchQueryDeva.replace(RegExp("र्"+"(["+deva_consonants+"])", "g"),'र्$1्$1')+".html";
+    console.log(address_wil)
+    var wilDiv = document.getElementById("wil");
+    console.log(address_wil)
+    fetch(address_wil)
+    .then(function (response) {
+        switch (response.status) {
+            // status "OK"
+            case 200:
+                return response.text();
+            // status "Not Found"
+            case 404:
+                throw response;
+        }
+    })
+    .then(function (response) {
+        var iframeWil = document.createElement("iframe");
+        iframeWil.setAttribute("src", address_wil);
+        iframeWil.setAttribute("style", "width: 100%;margin:0;padding:0;");
+        wilDiv.appendChild(iframeWil);
+    })
+    .catch(function (response) {
+        // "Not Found"
+        wilDiv.innerHTML="Not in Wilson. ";
+        wilDiv.style.border = 'dotted';
+        wilDiv.style.borderWidth = '0.15em';
+        wilDiv.style.padding = '0.5em';
+      });
+    wilInput.style.display = 'none';
+    
+  };
   if ((searchQuery != "") && (searchQuery != null)){
     headerDiv.style.margin = "unset";
     // CODE :
@@ -527,6 +567,9 @@ document.addEventListener("DOMContentLoaded", function(){
     
 
     if (searchQueryDeva != ""){
+
+      // Get WIL definition
+
 
       // Get STC definition
       var address = "stc/html_entries/"+searchQueryDeva+".html";
