@@ -523,6 +523,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
   var wilInput = document.getElementById("wilButton");
+
   wilInput.onclick = function () {
     
     var deva_consonants = "";
@@ -552,10 +553,31 @@ document.addEventListener("DOMContentLoaded", function(){
     })
     .catch(function (response) {
         // "Not Found"
+        var address_wil = "wil/html_entries/"+searchQueryDeva+".html";
+        fetch(address_wil)
+    .then(function (response) {
+        switch (response.status) {
+            // status "OK"
+            case 200:
+                return response.text();
+            // status "Not Found"
+            case 404:
+                throw response;
+        }
+    })
+    .then(function (response) {
+        var iframeWil = document.createElement("iframe");
+        iframeWil.setAttribute("src", address_wil);
+        iframeWil.setAttribute("style", "width: 100%;margin:0;padding:0;");
+        wilDiv.appendChild(iframeWil);
+    })
+    .catch(function (response) {
+        // "Not Found"
         wilDiv.innerHTML="Not in Wilson. ";
         wilDiv.style.border = 'dotted';
         wilDiv.style.borderWidth = '0.15em';
         wilDiv.style.padding = '0.5em';
+      });
       });
     wilInput.style.display = 'none';
     
@@ -568,8 +590,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if (searchQueryDeva != ""){
 
-      // Get WIL definition
+      // Set WIL button
+      var wilInput = document.getElementById("wilButton");
 
+      wilInput.style.display = 'block';
 
       // Get STC definition
       var address = "stc/html_entries/"+searchQueryDeva+".html";

@@ -246,3 +246,6 @@ ul li ul{
     padding-left: 1em;
   }
 
+#wilButton{
+    display: none;
+}
