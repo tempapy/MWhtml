@@ -710,38 +710,41 @@ document.addEventListener("DOMContentLoaded", function(){
           for(let i = 0; i < elements.length; i++){
             elements[i].onclick = function(e) {
               if (!window.matchMedia('(hover: hover)').matches){
+                
                 allDropDowns = document.getElementsByClassName("dropdown");
                 
-              for(let i = 0; i < allDropDowns.length; i++){
-                if (allDropDowns[i].getElementsByClassName("dropdowncontent").length) {
-                  if (allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display == "block"){
-                    allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display = "none";
+                for(let i = 0; i < allDropDowns.length; i++){
+                  if (allDropDowns[i].getElementsByClassName("dropdowncontent").length) {
+                    if (allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display == "block"){
+                      allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display = "none";
+                    }
+                  }
+                  if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "yellow"){
+                    allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
+                  }
+                  
+                  
+                
+                }
+                if (this.getElementsByClassName("dropdowncontent").length){
+                  
+                  if (getComputedStyle(this.getElementsByClassName("dropdowncontent")[0]).display == "none"){ //this.getElementsByClassName("dropdowncontent")[0].style.display
+                    
+                    
+                    this.getElementsByClassName("dropdowncontent")[0].style.display = "block";
                   }
                 }
-                if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "yellow"){
-                  allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
-                }
-                
-                
-              
-              }
-              if (this.getElementsByClassName("dropdowncontent").length){
-                if (this.getElementsByClassName("dropdowncontent")[0].style.display == "none"){
                   
-                  this.getElementsByClassName("dropdowncontent")[0].style.display = "block";
-                }
-              }
-                
-                // else{
-                //   this.getElementsByClassName("dropdowncontent")[0].style.display = "none";
-                // }
-                if (this.getElementsByClassName("dropbtn")[0].style.backgroundColor == "none"){
-                  this.getElementsByClassName("dropbtn")[0].style.backgroundColor = "yellow";
-                }
-                // else{
-                //   this.getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
-                // }
-                e.stopPropagation();
+                  // else{
+                  //   this.getElementsByClassName("dropdowncontent")[0].style.display = "none";
+                  // }
+                  if (this.getElementsByClassName("dropbtn")[0].style.backgroundColor == "none"){
+                    this.getElementsByClassName("dropbtn")[0].style.backgroundColor = "yellow";
+                  }
+                  // else{
+                  //   this.getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
+                  // }
+                  e.stopPropagation();
               }
               
             };
