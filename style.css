@@ -167,7 +167,7 @@ ls, ab{
 
 .dropbtn {
     text-decoration:inherit;
-    background-color: none;
+    background-color: transparent;
   }
   
 .dropdown {

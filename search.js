@@ -720,7 +720,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     }
                   }
                   if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "yellow"){
-                    allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
+                    allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "transparent";
                   }
                   
                   
@@ -738,7 +738,8 @@ document.addEventListener("DOMContentLoaded", function(){
                   // else{
                   //   this.getElementsByClassName("dropdowncontent")[0].style.display = "none";
                   // }
-                  if (this.getElementsByClassName("dropbtn")[0].style.backgroundColor == "none"){
+                  
+                  if (this.getElementsByClassName("dropbtn")[0].style.backgroundColor == "transparent"){
                     this.getElementsByClassName("dropbtn")[0].style.backgroundColor = "yellow";
                   }
                   // else{
