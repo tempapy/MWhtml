@@ -49,95 +49,82 @@ var slp12deva_table = {
       "S": "श्",
       "z": "ष्",
       "s": "स्",
-      "h": "ह्"},
+      "h": "ह्"
+  },
   "others":{
       "'": "ऽ",
       "H": "ः",
-      "Z": "ᳲ",
-      "V": "ᳲ",
+      "Z": "ᳵ",
+      "V": "ᳶ",
       "M": "ं",
-      "/": "॑",
-      "^": "᳠"
+      "~": "ँ",
+      "/": "", 
+      "^": "",
+      "\\":""
   }
 }
 
 var slp12iast_weirdnesses_table = {
-  "au": "aü", 
-  "ai": "aï", 
-  "kh": "kḧ",
-  "gh": "gḧ",
-  "ch": "cḧ",
-  "jh": "jḧ",
-  "wh": "ṭḧ",
-  "qh": "ḍḧ",
-  "Lh": "łḧ",
-  "th": "tḧ",
-  "dh": "dḧ",
-  "ph": "pḧ",
-  "bh": "bḧ"
+  "a-u":"au",
+  "a-i":"ai",
+  "k-h":"kh",
+  "g-h":"gh",
+  "c-h":"ch",
+  "j-h":"jh",
+  "ṭ-h":"wh",
+  "ḍ-h":"qh",
+  "ł-h":"Lh",
+  "t-h":"th",
+  "d-h":"dh",
+  "p-h":"ph",
+  "b-h":"bh"
 }
 var slp12iast_table = {
   "a": "a",
-  "A": "ā",
+  "ā": "A",
   "i": "i",
-  "I": "ī",
+  "ī": "I",
   "u": "u",
-  "U": "ū",
-  "f": "ṛ",
-  "F": "ṝ",
-  "x": "ḷ",
-  "X": "ḹ",
+  "ū": "U",
+  "ṛ": "f",
+  "ṝ": "F",
+  "ḷ": "x",
+  "ḹ": "X",
   "e": "e",
-  "E": "ai",
   "o": "o",
-  "O": "au",
   "k": "k",
-  "K": "kh",
   "g": "g",
-  "G": "gh",
-  "N": "ṅ",
+  "ṅ": "N",
   "c": "c",
-  "C": "ch",
   "j": "j",
-  "J": "jh",
-  "Y": "ñ",
-  "w": "ṭ",
-  "W": "ṭh",
-  "q": "ḍ",
-  "Q": "ḍh",
-  "R": "ṇ",
-  "L": "ł",
-  "|": "łh",
+  "ñ": "Y",
+  "ṭ": "w",
+  "ḍ": "q",
+  "ṇ": "R",
+  "ł": "L",
   "t": "t",
-  "T": "th",
   "d": "d",
-  "D": "dh",
   "n": "n",
   "p": "p",
-  "P": "ph",
   "b": "b",
-  "B": "bh",
   "m": "m",
   "y": "y",
   "r": "r",
   "l": "l",
   "v": "v",
-  "S": "ś",
-  "z": "ṣ",
+  "ś": "S",
+  "ṣ": "z",
   "s": "s",
   "h": "h",
-  "H": "ḥ",
-  "Z": "ẖ",
-  "V": "ḫ",
-  "M": "ṃ",
-  "/": "́", 
-  "^": "̀"
+  "ḥ": "H",
+  "ẖ": "Z",
+  "ḫ": "V",
+  "ṃ": "M",
+  "̐": "~",
+  "'": "'"
 }
 
 var iast2hk_table = {
-  "ü": "-u", 
-  "ï": "-i", 
-  "ḧ": "-h",
   "ā": "A",
   "ī": "I",
   "ū": "U",
@@ -161,9 +148,19 @@ var iast2hk_table = {
 
 var hk2slp1_3c_table ={
   "lRR": "X",
-  "a-u":"au", //Careful!
-  "a-i":"ai", //Careful!
-  "g-h":"gh" //Careful!
+  "a-u":"au", 
+  "a-i":"ai", 
+  "k-h":"kh",
+  "g-h":"gh",
+  "c-h":"ch",
+  "j-h":"jh",
+  "T-h":"wh",
+  "D-h":"qh",
+  "L-h":"Lh",
+  "t-h":"th",
+  "d-h":"dh",
+  "p-h":"ph",
+  "b-h":"bh"
 }
 var hk2slp1_2c_table = {
   "RR": "F",
@@ -176,7 +173,7 @@ var hk2slp1_2c_table = {
   "jh": "J",
   "Th": "W",
   "Dh": "Q",
-  "Lh": "|", //Careful!
+  "Lh": "|",
   "th": "T",
   "dh": "D",
   "ph": "P",
@@ -220,6 +217,7 @@ var hk2slp1_1c_table ={
   "Z": "Z",
   "V": "V",
   "M": "M",
+  "~": "~",
   "'": "'"
 }
 
@@ -376,21 +374,21 @@ function slp12deva(input, accents = false) {
   
   for (i in slp1_consonants){
     var c = slp1_consonants[i];
-    var regex = new RegExp("("+c+")"+"(?!["+slp1_vowels+"])", "g");
+    var regex = new RegExp("(["+c.replaceAll(/([\^\-\]\\])/gm, "\\$1")+"])"+"(?!["+slp1_vowels.replaceAll("/([\^\-\]\\])/gm", "\\$1")+"])", "gm");
     text = text.replaceAll(regex, transcode_consonants);
   }
   
   
   for (i in slp1_consonants){
     var c = slp1_consonants[i];
-    var regex = new RegExp("("+c+"["+slp1_vowels+"])", "g");
+    var regex = new RegExp("(["+c.replaceAll(/([\^\-\]\\])/gm, "\\$1")+"]["+slp1_vowels.replaceAll("/([\^\-\]\\])/gm", "\\$1")+"])", "gm");
     text = text.replaceAll(regex, transcode_syllables);
   }
 
   for (i in slp1_vowels){
     var c = slp1_vowels[i]
     
-    var regex = new RegExp("("+c+")", "g");
+    var regex = new RegExp("(["+c.replaceAll(/([\^\-\]\\])/gm, "\\$1")+"])", "gm");
     
     text = text.replaceAll(regex, transcode_vowels);
     
@@ -398,7 +396,8 @@ function slp12deva(input, accents = false) {
   
   for (i in slp1_others){
   	var c = slp1_others[i];
-    var regex = new RegExp("("+c+")", "g");
+    var regex = new RegExp("(["+c.replaceAll(/([\^\-\]\\])/gm, "\\$1")+"])", "gm");
+
     text = text.replaceAll(regex, transcode_others);
   }
   
@@ -530,7 +529,7 @@ document.addEventListener("DOMContentLoaded", function(){
         for (c in slp12deva_table.consonants){
           deva_consonants += slp12deva_table.consonants[c];
         }
-    var address_wil = "wil/html_entries/"+searchQueryDeva.replace(RegExp("र्"+"(["+deva_consonants+"])", "g"),'र्$1्$1')+".html";
+    var address_wil = "wil/html_entries/"+searchQueryDeva.replace(RegExp("र्"+"(["+deva_consonants+"])", "gm"),'र्$1्$1')+".html";
     console.log(address_wil)
     var wilDiv = document.getElementById("wil");
     console.log(address_wil)
@@ -555,29 +554,29 @@ document.addEventListener("DOMContentLoaded", function(){
         // "Not Found"
         var address_wil = "wil/html_entries/"+searchQueryDeva+".html";
         fetch(address_wil)
-    .then(function (response) {
-        switch (response.status) {
-            // status "OK"
-            case 200:
-                return response.text();
-            // status "Not Found"
-            case 404:
-                throw response;
-        }
-    })
-    .then(function (response) {
-        var iframeWil = document.createElement("iframe");
-        iframeWil.setAttribute("src", address_wil);
-        iframeWil.setAttribute("style", "width: 100%;margin:0;padding:0;");
-        wilDiv.appendChild(iframeWil);
-    })
-    .catch(function (response) {
-        // "Not Found"
-        wilDiv.innerHTML="Not in Wilson. ";
-        wilDiv.style.border = 'dotted';
-        wilDiv.style.borderWidth = '0.15em';
-        wilDiv.style.padding = '0.5em';
-      });
+        .then(function (response) {
+            switch (response.status) {
+                // status "OK"
+                case 200:
+                    return response.text();
+                // status "Not Found"
+                case 404:
+                    throw response;
+            }
+        })
+        .then(function (response) {
+            var iframeWil = document.createElement("iframe");
+            iframeWil.setAttribute("src", address_wil);
+            iframeWil.setAttribute("style", "width: 100%;margin:0;padding:0;");
+            wilDiv.appendChild(iframeWil);
+        })
+        .catch(function (response) {
+            // "Not Found"
+            wilDiv.innerHTML="Not in Wilson. ";
+            wilDiv.style.border = 'dotted';
+            wilDiv.style.borderWidth = '0.15em';
+            wilDiv.style.padding = '0.5em';
+          });
       });
     wilInput.style.display = 'none';
     
@@ -596,8 +595,6 @@ document.addEventListener("DOMContentLoaded", function(){
       wilInput.style.display = 'block';
 
       // Get STC definition
-      var address = "stc/html_entries/"+searchQueryDeva+".html";
-      
       var iframeDiv = document.getElementById("iframe");
       /*
       var client = new XMLHttpRequest();
@@ -621,30 +618,46 @@ document.addEventListener("DOMContentLoaded", function(){
       client.send();
       */
       
-      fetch(address)
-      .then(function (response) {
-          switch (response.status) {
-              // status "OK"
-              case 200:
-                  return response.text();
-              // status "Not Found"
-              case 404:
-                  throw response;
-          }
-      })
-      .then(function (response) {
-          var iframe = document.createElement("iframe");
-          iframe.setAttribute("src", address);
-          iframe.setAttribute("style", "width: 100%;margin:0;padding:0;");
-          iframeDiv.appendChild(iframe);
-      })
-      .catch(function (response) {
-          // "Not Found"
-          iframeDiv.innerHTML="Absent du Stchoupak. Les noms à plusieurs thèmes, à finale consonantique, les mots composés, les dénominatifs, etc. ne sont pas forcément listés sous la même entrée entre les deux dictionnaires. ";
-          iframeDiv.style.border = 'dotted';
-          iframeDiv.style.borderWidth = '0.15em';
-          iframeDiv.style.padding = '0.5em';
-        });
+      var address = "stc/html_entries/"+searchQueryDeva+".html";
+
+      alternatives = [address]
+      var found = false
+      for(let i = 0; i < alternatives.length; i++){
+        if (!found){
+          fetch(alternatives[i])
+          .then(function (response) {
+              switch (response.status) {
+                  // status "OK"
+                  case 200:
+                      found = true;
+                      return response.text();
+                  // status "Not Found"
+                  case 404:
+                      console.log(i, alternatives.length-1)
+                      if (i == alternatives.length-1) throw response;
+              }
+          })
+          .then(function (response) {
+              
+                var iframe = document.createElement("iframe");
+                iframe.setAttribute("src", alternatives[i]);
+                iframe.setAttribute("style", "width: 100%;margin:0;padding:0;");
+                iframeDiv.appendChild(iframe);
+          })
+          .catch(function (response) {
+              // "Not Found"
+              if (i == alternatives.length-1){
+                iframeDiv.innerHTML="Absent du Stchoupak. Les noms à plusieurs thèmes, à finale consonantique, les mots composés, les dénominatifs, etc. ne sont pas forcément listés sous la même entrée entre les deux dictionnaires. ";
+                iframeDiv.style.border = 'dotted';
+                iframeDiv.style.borderWidth = '0.15em';
+                iframeDiv.style.padding = '0.5em';
+              }
+            });
+          if (found) break;
+        }
+        
+      }
+      
       // Strip header
 
       var requestURL = 'html_entries/'+searchQueryDeva+'.html';
