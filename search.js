@@ -80,7 +80,7 @@ var slp12iast_weirdnesses_table = {
   "b-h":"bh"
 }
 var slp12iast_table = {
-  "a": "a",
+    "a": "a",
     "A": "ā",
     "i": "i",
     "I": "ī",
