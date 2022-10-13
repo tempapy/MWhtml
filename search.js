@@ -450,9 +450,9 @@ document.onclick = function(e) {
           allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display = "none";
         }
       }
-      
-      if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "yellow"){
-        allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
+      console.log(allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor)
+      if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "grey"){
+        allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "transparent";
       }
     
     }
@@ -748,7 +748,7 @@ document.addEventListener("DOMContentLoaded", function(){
                       allDropDowns[i].getElementsByClassName("dropdowncontent")[0].style.display = "none";
                     }
                   }
-                  if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "yellow"){
+                  if (allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor == "grey"){
                     allDropDowns[i].getElementsByClassName("dropbtn")[0].style.backgroundColor = "transparent";
                   }
                   
@@ -769,7 +769,7 @@ document.addEventListener("DOMContentLoaded", function(){
                   // }
                   
                   if (this.getElementsByClassName("dropbtn")[0].style.backgroundColor == "transparent"){
-                    this.getElementsByClassName("dropbtn")[0].style.backgroundColor = "yellow";
+                    this.getElementsByClassName("dropbtn")[0].style.backgroundColor = "grey";
                   }
                   // else{
                   //   this.getElementsByClassName("dropbtn")[0].style.backgroundColor = "none";
