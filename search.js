@@ -657,7 +657,7 @@ document.addEventListener("DOMContentLoaded", function(){
               
                 var iframe = document.createElement("iframe");
                 iframe.setAttribute("src", alternatives[i]);
-                iframe.setAttribute("style", "width: 100%;margin:0;padding:0;");
+                iframe.setAttribute("style", "width: 100%;");
                 iframeDiv.appendChild(iframe);
           })
           .catch(function (response) {
