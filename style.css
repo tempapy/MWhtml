@@ -120,13 +120,16 @@ s1 .dropdown{
     -webkit-text-decoration-line: underline;
 }
 #word{
+    font-size: 150%;
 }
 #definition{
     margin-left: -1em;
     /*position: relative; 
     left: -50px;*/
 }
-
+#iframe{
+    margin-top:0.5em;
+}
 
 sk {
     font-style: italic;
