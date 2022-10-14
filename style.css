@@ -133,8 +133,8 @@ s1 .dropdown{
 }
 
 a {
-    color: var(--txtcolor);
-    text-decoration-color: var(--txtcolor);
+    color: var(--txtcolor)!important;
+    text-decoration-color: var(--txtcolor)!important;
 }
 
 
