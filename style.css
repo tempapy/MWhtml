@@ -123,8 +123,9 @@ s1 .dropdown{
     font-size: 150%;
 }
 #definition{
+    /*
     margin-left: -1em;
-    /*position: relative; 
+    position: relative; 
     left: -50px;*/
 }
 #iframe{
@@ -132,8 +133,8 @@ s1 .dropdown{
 }
 
 a {
-    color: green;
-    text-decoration-color: green;
+    color: var(--txtcolor);
+    text-decoration-color: var(--txtcolor);
 }
 
 
@@ -249,6 +250,9 @@ hom {
     color : var(--txtlightcolor);
 }
 
+ul{
+    padding-left: 1em;
+}
 ul li ul{
     padding-left: 1em;
   }
