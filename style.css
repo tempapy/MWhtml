@@ -131,6 +131,12 @@ s1 .dropdown{
     margin-top:0.5em;
 }
 
+a {
+    color: green;
+    text-decoration-color: green;
+}
+
+
 sk {
     font-style: italic;
     color:var(--sanskritcolor);
