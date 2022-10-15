@@ -635,44 +635,51 @@ document.addEventListener("DOMContentLoaded", function(){
       */
       
       var address = "stc/html_entries/"+searchQueryDeva+".html";
-
       alternatives = [address]
-      var found = false
-      for(let i = 0; i < alternatives.length; i++){
-        if (!found){
-          fetch(alternatives[i])
-          .then(function (response) {
+
+      var stops = ["कखगघङचछजझञटठडढणतथदधनपफबभम"]
+      address = "stc/html_entries/"+searchQueryDeva.replaceAll(/म्([पफबभम])/gm,"ं$1")+".html";
+      alternatives.push(address);
+      
+      var fetchNow = function(alternatives) {
+        if (alternatives.length != 0)
+            fetch(alternatives[0])
+            .then(function (response) {
               switch (response.status) {
                   // status "OK"
                   case 200:
-                      found = true;
-                      return response.text();
+                    return alternatives.splice(0, 1)[0]
                   // status "Not Found"
                   case 404:
-                      console.log(i, alternatives.length-1)
-                      if (i == alternatives.length-1) throw response;
+                      alternatives.splice(0, 1)
+                      if (alternatives.length == 0) throw response;
+                      else {
+                        fetchNow(alternatives);
+                        return -1;
+                      }
+                  default:
+                    return -1
               }
-          })
-          .then(function (response) {
               
+            })
+            .then(function (response) {
+              if(response != -1){
+
                 var iframe = document.createElement("iframe");
-                iframe.setAttribute("src", alternatives[i]);
+                iframe.setAttribute("src", response);
                 iframe.setAttribute("style", "width: 100%;margin:0;padding:0;");
                 iframeDiv.appendChild(iframe);
-          })
-          .catch(function (response) {
-              // "Not Found"
-              if (i == alternatives.length-1){
-                iframeDiv.innerHTML="Absent du Stchoupak. Les noms à plusieurs thèmes, à finale consonantique, les mots composés, les dénominatifs, etc. ne sont pas forcément listés sous la même entrée entre les deux dictionnaires. ";
-                iframeDiv.style.border = 'dotted';
-                iframeDiv.style.borderWidth = '0.15em';
-                iframeDiv.style.padding = '0.5em';
               }
-            });
-          if (found) break;
-        }
-        
-      }
+            })
+            .catch(function (response) {
+                // "Not Found"
+                  iframeDiv.innerHTML="Absent du Stchoupak. Les noms à plusieurs thèmes, à finale consonantique, les mots composés, les dénominatifs, etc. ne sont pas forcément listés sous la même entrée entre les deux dictionnaires. ";
+                  iframeDiv.style.border = 'dotted';
+                  iframeDiv.style.borderWidth = '0.15em';
+                  iframeDiv.style.padding = '0.5em';
+              });
+            }
+        fetchNow(alternatives);
       
       // Strip header
 
