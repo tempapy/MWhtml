@@ -232,13 +232,6 @@ en a{
     pointer-events: none; /*disable MWen links*/
 }
 
-a.pc, a.root{
-    text-decoration: none;
-    vertical-align: super!important;
-    font-size: 70%!important;
-    color: var(--txtlightcolor)!important;
-    
-}
 /*
 html, body { scrollbar-width: none; }*/
 
@@ -259,4 +252,20 @@ ul li ul{
 
 #wilButton{
     display: none;
+}
+
+.parent, .children{
+    color:grey;
+    font-style: italic;
+}
+.parent a, .children a{
+    text-decoration:inherit;
+    color:inherit;
+}
+
+a.pc, a.root{
+    text-decoration: none;
+    vertical-align: super!important;
+    font-size: 70%!important;
+    color: var(--txtlightcolor)!important;
 }
