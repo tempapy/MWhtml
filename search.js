@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 return response.text();
             // status "Not Found"
             case 404:
-                throw response;
+                console.log("MW not found");
         }
     })
     .then(function (response) {
@@ -577,7 +577,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     return response.text();
                 // status "Not Found"
                 case 404:
-                    throw response;
+                  console.log("MW not found");
             }
         })
         .then(function (response) {
@@ -612,6 +612,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       // Get STC definition
       var iframeDiv = document.getElementById("iframe");
+      var iframe_bhsDiv = document.getElementById("iframe_bhs");
       /*
       var client = new XMLHttpRequest();
       client.onreadystatechange = function() {
@@ -652,7 +653,11 @@ document.addEventListener("DOMContentLoaded", function(){
                   // status "Not Found"
                   case 404:
                       alternatives.splice(0, 1)
-                      if (alternatives.length == 0) throw response;
+                      if (alternatives.length == 0) 
+                      if (alternatives.length == 0) {
+                        console.log("STC not found"); 
+                        return -1;
+                      }
                       else {
                         fetchNow(alternatives);
                         return -1;
@@ -670,17 +675,76 @@ document.addEventListener("DOMContentLoaded", function(){
                 iframe.setAttribute("style", "width: 100%;margin:0;padding:0;");
                 iframeDiv.appendChild(iframe);
               }
-            })
-            .catch(function (response) {
-                // "Not Found"
+              else{
                   iframeDiv.innerHTML="Absent du Stchoupak. Les noms à plusieurs thèmes, à finale consonantique, les mots composés, les dénominatifs, etc. ne sont pas forcément listés sous la même entrée entre les deux dictionnaires. ";
                   iframeDiv.style.border = 'dotted';
                   iframeDiv.style.borderWidth = '0.15em';
                   iframeDiv.style.padding = '0.5em';
+              }
+
+            })
+            .catch(function (response) {
+                // "Error"
               });
             }
-        fetchNow(alternatives);
+      fetchNow(alternatives);
       
+    var address = "bhs/html_entries/"+searchQueryDeva+".html";
+    alternatives = [address]
+
+    var stops = ["कखगघङचछजझञटठडढणतथदधनपफबभम"]
+    address = "bhs/html_entries/"+searchQueryDeva.replaceAll(/म्([पफबभम])/gm,"ं$1")+".html";
+    alternatives.push(address);
+    
+
+  
+    var fetchNow = function(alternatives) {
+      if (alternatives.length != 0)
+          fetch(alternatives[0])
+          .then(function (response) {
+            switch (response.status) {
+                // status "OK"
+                case 200:
+                  return alternatives.splice(0, 1)[0]
+                // status "Not Found"
+                case 404:
+                    alternatives.splice(0, 1)
+                    if (alternatives.length == 0) {
+                      console.log("BHS not found"); 
+                      return -1;
+                    }
+                    else {
+                      fetchNow(alternatives);
+                      return -1;
+                    }
+                default:
+                  return -1
+            }
+            
+          })
+          .then(function (response) {
+            if(response != -1){
+
+              var iframe = document.createElement("iframe");
+              iframe.setAttribute("src", response);
+              iframe.setAttribute("style", "width: 100%;margin:0;padding:0;");
+              iframe_bhsDiv.appendChild(iframe);
+            }
+            else{
+              
+              iframe_bhsDiv.innerHTML="Not in BHS. ";
+              iframe_bhsDiv.style.border = 'dotted';
+              iframe_bhsDiv.style.borderWidth = '0.15em';
+              iframe_bhsDiv.style.padding = '0.5em';
+            }
+          })
+          .catch(function (response) {
+              // "Error"
+            });
+          }
+      fetchNow(alternatives);
+        
+
       // Strip header
 
       var requestURL = 'html_entries/'+searchQueryDeva+'.html';
